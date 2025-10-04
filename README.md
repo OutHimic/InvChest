@@ -1,5 +1,7 @@
 # InvChest
 
+[简体中文](https://github.com/OutHimic/InvChest/blob/main/README.md)  |  [ENGLISH](https://github.com/OutHimic/InvChest/blob/main/README_EN.md)
+
 一个Bukkit插件，让木桶里的物品自动流入玩家的口袋！
 现在还不推荐大家使用，因为还有亿点点_{小Bug} ：被转移的物品会留在箱子里，不知道怎么删掉qwq所以就会把物品无限复制给玩家……
 我不会Java，我需要技术人员的帮助！！！！
