@@ -1,0 +1,25 @@
+name: InvChest
+version: '1.3-Alpha'
+main: cn.craftime.invChest.InvChest
+api-version: '1.21'
+authors: [ OutHimic ]
+description: 让箱子里的物品自己流进玩家的寇岛！
+website: https://github.com/OutHimic/InvChest
+
+commands:
+  invchest:
+    description: 绑定木桶到物品栏或重载配置
+    usage: /invchest [playerID] 或 /invchest reload
+    permission: invchest.bind
+    permission-message: "§c你没有权限使用这个命令。"
+
+permissions:
+  invchest.bind:
+    description: 允许使用/invchest命令绑定木桶
+    default: true
+  invchest.bind.others:
+    description: 允许将木桶绑定到其他玩家
+    default: op
+  invchest.reload:
+    description: 允许重载插件配置
+    default: op

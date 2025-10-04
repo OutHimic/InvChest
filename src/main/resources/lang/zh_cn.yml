@@ -1,0 +1,35 @@
+# InvChest 中文语言文件
+prefix: "&6[InvChest]&f "
+
+# 命令消息
+commands:
+  usage: "&c用法: /invchest [玩家ID] 或 /invchest reload"
+  no-permission: "&c你没有权限使用这个命令。"
+  player-not-found: "&c玩家未找到。"
+  reload-success: "&a配置重载成功！"
+  no-barrel-in-sight: "&c请看着一个木桶！"
+  barrel-bound: "&a木桶已绑定到你的物品栏！"
+  barrel-bound-other: "&a木桶已绑定到玩家 &6{player}&a 的物品栏！"
+  barrel-already-bound: "&c这个木桶已经被绑定了！"
+  max-bindings-reached: "&c你已达到最大绑定限制 (&6{max}&c)。"
+  not-bound: "&c这个木桶未被绑定。"
+  not-your-barrel: "&c这个木桶不属于你。"
+  barrel-unbound: "&a木桶已解除绑定！"
+  barrel-unbound-other: "&a已解除玩家 &6{player}&a 的木桶绑定！"
+  barrel-destroyed: "&c你的绑定木桶已被破坏，绑定已自动解除。"
+
+# 转移消息
+transfer:
+  items-received: "&a你从木桶收到了 &6{amount}&a 个 &6{item}&a！"
+  inventory-full: "&c物品栏已满，无法接收所有物品。"
+
+# 错误消息
+errors:
+  config-load-failed: "&c加载配置文件失败，使用默认配置。"
+  language-load-failed: "&c加载语言文件失败，使用默认语言。"
+
+# 调试消息
+debug:
+  barrel-bound: "木桶绑定: {player} -> {location}"
+  transfer-started: "开始物品转移: {player} -> {location}"
+  transfer-completed: "物品转移完成: {player} -> {location}, 转移了 {amount} 个物品"

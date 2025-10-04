@@ -1,0 +1,35 @@
+# InvChest English Language File
+prefix: "&6[InvChest]&f "
+
+# Command messages
+commands:
+  usage: "&cUsage: /invchest [playerID] or /invchest reload"
+  no-permission: "&cYou don't have permission to use this command."
+  player-not-found: "&cPlayer not found."
+  reload-success: "&aConfiguration reloaded successfully!"
+  no-barrel-in-sight: "&cPlease look at a barrel!"
+  barrel-bound: "&aBarrel bound to your inventory!"
+  barrel-bound-other: "&aBarrel bound to player &6{player}&a's inventory!"
+  barrel-already-bound: "&cThis barrel is already bound!"
+  max-bindings-reached: "&cYou have reached the maximum binding limit (&6{max}&c)."
+  not-bound: "&cThis barrel is not bound."
+  not-your-barrel: "&cThis barrel doesn't belong to you."
+  barrel-unbound: "&aBarrel unbound successfully!"
+  barrel-unbound-other: "&aUnbound barrel from player &6{player}&a!"
+  barrel-destroyed: "&cYour bound barrel was destroyed, binding removed."
+
+# Transfer messages
+transfer:
+  items-received: "&aYou received &6{amount}&a &6{item}&a from barrel!"
+  inventory-full: "&cInventory full, cannot receive all items."
+
+# Error messages
+errors:
+  config-load-failed: "&cFailed to load config file, using defaults."
+  language-load-failed: "&cFailed to load language file, using default language."
+
+# Debug messages
+debug:
+  barrel-bound: "Barrel bound: {player} -> {location}"
+  transfer-started: "Started item transfer: {player} -> {location}"
+  transfer-completed: "Item transfer completed: {player} -> {location}, transferred {amount} items"

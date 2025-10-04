@@ -1,0 +1,24 @@
+# InvChest 配置文件
+# 语言设置，支持 zh_cn, en_us 等
+language: zh_cn
+
+# 调试模式
+debug: false
+
+# 物品转移设置
+transfer:
+  # 自动转移间隔（秒）
+  interval: 5
+  # 是否启用全服务器范围自动转移
+  global-transfer: true
+  # 转移时是否显示提示消息（默认关闭，避免服务器刷屏）
+  show-messages: false
+
+# 木桶绑定设置
+binding:
+  # 最大绑定木桶数量（每个玩家）
+  max-bindings: 10
+  # 绑定后是否允许其他玩家打开
+  allow-others-open: false
+  # 绑定后是否允许破坏（默认启用，破坏后自动解绑）
+  allow-break: true
