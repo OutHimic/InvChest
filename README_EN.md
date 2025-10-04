@@ -6,8 +6,8 @@ A Bukkit plugin that automatically transfers items from barrels directly into pl
 
 ## Some little tips
 - **Not recommended for use yet** as there are still a *few small bugs*:
-- Transferred items remain in the barrel, and I don't know how to remove them qwq, resulting in infinite item duplication for players...
-- I don't know Java, I need technical help!!!!
+- *Transferred items remain in the barrel, and I don't know how to remove them qwq, resulting in infinite item duplication for players...*
+- *I don't know Java*, **I need technical help!!!!**
 
 ## Features
 
