@@ -1,6 +1,8 @@
 # InvChest
 
 一个Bukkit插件，让木桶里的物品自动流入玩家的口袋！
+现在还不推荐大家使用，因为还有亿点点_{小Bug} ：被转移的物品会留在箱子里，不知道怎么删掉qwq所以就会把物品无限复制给玩家……
+我不会Java，我需要技术人员的帮助！！！！
 
 ## 功能特性
 
@@ -22,7 +24,7 @@
 1. 下载最新的 `InvChest.jar` 文件
 2. 将文件放入服务器的 `plugins` 文件夹
 3. 重启服务器
-4. 插件会自动生成配置文件和语言文件
+4. 插件会自动生成配置文件和语言文件（中英）
 
 ## 命令使用
 
@@ -45,6 +47,7 @@
 
 ### config.yml
 ```yaml
+# InvChest 配置文件
 # 语言设置，支持 zh_cn, en_us 等
 language: zh_cn
 
@@ -57,8 +60,8 @@ transfer:
   interval: 5
   # 是否启用全服务器范围自动转移
   global-transfer: true
-  # 转移时是否显示提示消息
-  show-messages: true
+  # 转移时是否显示提示消息（默认关闭，避免服务器刷屏）
+  show-messages: false
 
 # 木桶绑定设置
 binding:
@@ -66,8 +69,8 @@ binding:
   max-bindings: 10
   # 绑定后是否允许其他玩家打开
   allow-others-open: false
-  # 绑定后是否允许破坏
-  allow-break: false
+  # 绑定后是否允许破坏（默认启用，破坏后自动解绑）
+  allow-break: true
 ```
 
 ### 语言文件
@@ -102,7 +105,8 @@ src/main/java/cn/craftime/invChest/
 ├── commands/
 │   └── InvChestCommand.java   # 命令执行器
 ├── listeners/
-│   └── PlayerInteractionListener.java # 事件监听器
+│   ├── PlayerInteractionListener.java # 事件监听器
+│   └── BarrelBreakListener.java #木桶破坏解绑监听
 └── tasks/
     └── ItemTransferTask.java  # 自动转移任务
 ```
@@ -113,12 +117,12 @@ src/main/java/cn/craftime/invChest/
 mvn clean package
 ```
 
-构建后的插件文件会在 `target/` 目录中生成。
+构建后的插件文件会在 `/target/` 目录中生成。
 
 ## 技术特性
 
 - ✅ **线程安全**：使用 ConcurrentHashMap 确保线程安全
-- ✅ **原子操作**：物品转移采用原子操作，避免物品丢失
+- ✅ **原子操作**：物品转移采用原子操作，避免物品丢失（你放心好了绝对丢不了，丢一个我给你赔到物品栏满了为止）
 - ✅ **内存优化**：高效的数据结构和缓存机制
 - ✅ **错误处理**：完善的异常处理和日志记录
 - ✅ **性能监控**：调试模式和性能监控
@@ -128,7 +132,7 @@ mvn clean package
 - 木桶绑定后默认无法被其他玩家打开
 - 玩家蹲下右键可以放置物品到木桶周围（如接漏斗）
 - 物品转移遵循"先尝试添加，再根据结果移除"的原则，确保物品安全
-- 插件重启后绑定数据会丢失（内存存储）
+- 插件重启后绑定数据会丢失（内存存储，我不知道怎么存文件）
 
 ## 支持与反馈
 
@@ -137,4 +141,4 @@ https://github.com/OutHimic/InvChest
 
 ## 许可证
 
-本项目采用 MIT 许可证。
+本项目采用无许可证，当成时 CC0 就行。
