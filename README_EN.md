@@ -1,5 +1,7 @@
 # InvChest
 
+[简体中文](https://github.com/OutHimic/InvChest/blob/main/README.md)  |  [ENGLISH](https://github.com/OutHimic/InvChest/blob/main/README_EN.md)
+
 A Bukkit plugin that automatically transfers items from barrels directly into players' pockets!
 **Not recommended for use yet** as there are still a *few small bugs*: Transferred items remain in the barrel, and I don't know how to remove them qwq, resulting in infinite item duplication for players...
 I don't know Java, I need technical help!!!!
