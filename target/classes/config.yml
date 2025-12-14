@@ -1,0 +1,29 @@
+# 传输检查间隔（秒）
+# Transfer interval in seconds
+transfer-interval: 15
+
+# 传输模式：all（清空容器并尽量放入背包，剩余掉落）或 try（尽量移入，遇到装不下即停止，剩余保留）
+# Transfer mode: "all" or "try"
+transfer-mode: "all"
+
+# 单次传输的物品数量上限（按堆叠数量累加）
+# Max items per transfer (sum of stack sizes)
+max-items-per-transfer: 64
+
+# 红石相关功能已移除
+
+# 语言设置：如 zh_cn / en_us 或 auto_en_us（控制台使用 en_us，玩家按客户端语言自动匹配）
+# Language: e.g., zh_cn / en_us, or auto_en_us (console uses en_us, players auto-match)
+lang: "auto_zh_cn"
+
+# 调试模式（输出更详细日志）
+# Debug mode (verbose logging)
+debug-mode: false
+
+# 每位玩家可绑定的容器数量上限；设为 0 表示不限制
+# Max bound containers per player; 0 means unlimited
+max-bound-containers-per-player: 0
+
+# 是否发送“传送成功”消息；仅在有传输发生时发送；默认不发送
+# Send transfer success message; only when items actually moved; default false
+transfer-message-enabled: false
