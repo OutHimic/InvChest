@@ -12,15 +12,19 @@ public class BoundContainer {
     public int y;
     public int z;
     public String type;
+    public String name;
+    public int chunkRange;
 
     public BoundContainer() {}
 
-    public BoundContainer(Location loc, String type) {
+    public BoundContainer(Location loc, String type, String name, int chunkRange) {
         this.world = loc.getWorld().getName();
         this.x = loc.getBlockX();
         this.y = loc.getBlockY();
         this.z = loc.getBlockZ();
         this.type = type;
+        this.name = name;
+        this.chunkRange = chunkRange;
     }
 
     public Location toLocation() {

@@ -42,6 +42,10 @@ public class TransferScheduler {
     }
 
     private void iterate() {
+        if (plugin.store().isGlobalPaused()) {
+            return; // Global pause
+        }
+        
         for (Map.Entry<UUID, List<BoundContainer>> e : plugin.store().snapshot().entrySet()) {
             UUID uid = e.getKey();
             Player p = Bukkit.getPlayer(uid);
@@ -49,7 +53,14 @@ public class TransferScheduler {
             List<BoundContainer> list = e.getValue();
             for (BoundContainer bc : list) {
                 Location loc = bc.toLocation();
-                if (loc == null || !loc.getBlock().getType().name().equals(bc.type)) {
+                
+                // If chunk is not loaded, we cannot safely access block
+                if (loc == null || !loc.getWorld().isChunkLoaded(loc.getBlockX() >> 4, loc.getBlockZ() >> 4)) {
+                    // Skip if chunk unloaded
+                    continue;
+                }
+                
+                if (!loc.getBlock().getType().name().equals(bc.type)) {
                     plugin.store().unbind(uid, bc);
                     p.sendMessage(color(plugin.lang().get(p, "prefix", null) + plugin.lang().get(p, "container.missing.auto_unbound", null)));
                     continue;
@@ -61,7 +72,6 @@ public class TransferScheduler {
                     String key = plugin.config().getTransferMode().equals("all") ? "transfer.complete.all" : "transfer.complete.try";
                     p.sendMessage(color(plugin.lang().get(p, "prefix", null) + plugin.lang().get(p, key, null)));
                 }
-                // redstone output removed
             }
         }
     }

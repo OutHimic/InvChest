@@ -1,11 +1,6 @@
-cn\craftime\invchest\task\TransferScheduler.class
 cn\craftime\invchest\storage\BindingStore$1.class
 cn\craftime\invchest\config\ConfigManager.class
 cn\craftime\invchest\lang\LangManager.class
-cn\craftime\invchest\listener\ContainerProtectionListener.class
 cn\craftime\invchest\storage\BindingStore.class
-cn\craftime\invchest\InvChest.class
-cn\craftime\invchest\task\TransferScheduler$1.class
 cn\craftime\invchest\storage\BoundContainer.class
-cn\craftime\invchest\command\InvChestCommand.class
 cn\craftime\invchest\storage\BindingStore$2.class

@@ -1,6 +1,6 @@
 # 传输检查间隔（秒）
 # Transfer interval in seconds
-transfer-interval: 15
+transfer-interval: 30
 
 # 传输模式：all（清空容器并尽量放入背包，剩余掉落）或 try（尽量移入，遇到装不下即停止，剩余保留）
 # Transfer mode: "all" or "try"
@@ -14,15 +14,49 @@ max-items-per-transfer: 64
 
 # 语言设置：如 zh_cn / en_us 或 auto_en_us（控制台使用 en_us，玩家按客户端语言自动匹配）
 # Language: e.g., zh_cn / en_us, or auto_en_us (console uses en_us, players auto-match)
-lang: "auto_zh_cn"
+lang: "auto_en_us"
 
 # 调试模式（输出更详细日志）
 # Debug mode (verbose logging)
 debug-mode: false
 
-# 每位玩家可绑定的容器数量上限；设为 0 表示不限制
-# Max bound containers per player; 0 means unlimited
-max-bound-containers-per-player: 0
+# 绑定相关设置
+bind:
+  # 每位玩家可绑定的容器数量上限
+  # Max bound containers per player
+  max-per-player: 10
+  
+  # 默认区块加载范围（-1：不常加载，0：仅所在区块，>0：半径）
+  # Default chunk loading range (-1: none, 0: self, >0: radius)
+  default-chunk-range: -1
+  
+  # 自动命名格式（{number} 会被替换为序号）
+  # Auto name format ({number} replaced by index)
+  auto-name-format: "绑定{number}"
+
+# 区块加载设置
+chunk-loading:
+  # 是否启用区块常加载功能
+  # Enable chunk loading feature
+  enabled: true
+  
+  # 允许的最大加载范围
+  # Max chunk loading range
+  max-range: 16
+  
+  # 自动卸载延迟（秒）（预留，暂未实现复杂逻辑，目前仅跟随玩家在线状态）
+  # Auto unload delay in seconds (reserved)
+  auto-unload-delay: 300
+
+# 界面设置
+ui:
+  # 列表每页显示条数
+  # Items per page in list command
+  list-items-per-page: 8
+  
+  # 是否显示最后一次传输时间（暂未实现）
+  # Show last transfer time (reserved)
+  show-last-transfer: true
 
 # 是否发送“传送成功”消息；仅在有传输发生时发送；默认不发送
 # Send transfer success message; only when items actually moved; default false
