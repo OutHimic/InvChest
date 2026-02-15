@@ -14,6 +14,7 @@ public class BoundContainer {
     public String type;
     public String name;
     public int chunkRange;
+    public boolean paused;
 
     public BoundContainer() {}
 
@@ -25,6 +26,7 @@ public class BoundContainer {
         this.type = type;
         this.name = name;
         this.chunkRange = chunkRange;
+        this.paused = false;
     }
 
     public Location toLocation() {

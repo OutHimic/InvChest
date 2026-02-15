@@ -2,37 +2,30 @@ name: InvChest
 version: '${project.version}'
 main: cn.craftime.invchest.InvChest
 authors: [OutHimic、TTOCServer]
-description: 让容器里的物品自己流进玩家的口袋。
+description: 让容器里的物品自己流进玩家的口袋。启普发生器更新
 website: github.com/TTOCServer/
+api-version: 1.13
 commands:
   invchest:
     description: InvChest main command
     aliases: [ic]
-    usage: /invchest <bind|unbind|list|info|pause|resume|reload> [player]
+    usage: /invchest <bind|unbind|list|start|stop|abind|aunbind|alist|astart|astop|reload>
     permission: invchest.bind
 permissions:
   invchest.bind:
-    description: Allows a player to bind/unbind a container
+    description: Allows a player to bind/unbind containers
     default: true
-  invchest.bind.multiple:
-    description: Allows a player to bind multiple containers (up to config limit)
+  invchest.statue:
+    description: Allows a player to start/stop transfers
     default: true
-  invchest.admin:
-    description: Full admin access
+  invchest.abind:
+    description: Allows admin bind/unbind/list for others
     default: op
-    children:
-      invchest.admin.manage: true
-      invchest.admin.inspect: true
-      invchest.admin.global: true
-      invchest.reload: true
-  invchest.admin.manage:
-    description: Allows managing other players' bindings
+  invchest.astatue:
+    description: Allows admin start/stop for others or global
     default: op
-  invchest.admin.inspect:
-    description: Allows inspecting other players' bindings
-    default: op
-  invchest.admin.global:
-    description: Allows global pause/resume
+  invchest.inf:
+    description: Shows owner info in protected message
     default: op
   invchest.reload:
     description: Allows reloading the plugin configuration

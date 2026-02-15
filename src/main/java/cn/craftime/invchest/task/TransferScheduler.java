@@ -43,15 +43,15 @@ public class TransferScheduler {
 
     private void iterate() {
         if (plugin.store().isGlobalPaused()) {
-            return; // Global pause
+            return;
         }
-        
         for (Map.Entry<UUID, List<BoundContainer>> e : plugin.store().snapshot().entrySet()) {
             UUID uid = e.getKey();
             Player p = Bukkit.getPlayer(uid);
             if (p == null) continue;
             List<BoundContainer> list = e.getValue();
             for (BoundContainer bc : list) {
+                if (bc.paused) continue;
                 Location loc = bc.toLocation();
                 
                 // If chunk is not loaded, we cannot safely access block
@@ -61,7 +61,11 @@ public class TransferScheduler {
                 }
                 
                 if (!loc.getBlock().getType().name().equals(bc.type)) {
+                    if (bc.chunkRange >= 0 && plugin.chunkLoader().isSupported()) {
+                        plugin.chunkLoader().release(loc, bc.chunkRange);
+                    }
                     plugin.store().unbind(uid, bc);
+                    plugin.store().save();
                     p.sendMessage(color(plugin.lang().get(p, "prefix", null) + plugin.lang().get(p, "container.missing.auto_unbound", null)));
                     continue;
                 }

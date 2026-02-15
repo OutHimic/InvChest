@@ -8,9 +8,12 @@ import org.bukkit.Location;
 import org.bukkit.plugin.Plugin;
 
 import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.lang.reflect.Type;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -40,7 +43,7 @@ public class BindingStore {
         }
         
         // Try to load as new structure (object with "paused" and "data")
-        try (FileReader reader = new FileReader(file)) {
+        try (InputStreamReader reader = new InputStreamReader(new FileInputStream(file), StandardCharsets.UTF_8)) {
             JsonObject root = gson.fromJson(reader, JsonObject.class);
             if (root != null) {
                 if (root.has("paused")) {
@@ -60,7 +63,7 @@ public class BindingStore {
         } catch (Exception ignored) {}
 
         // Fallback: try legacy load (raw map of lists)
-        try (FileReader reader = new FileReader(file)) {
+        try (InputStreamReader reader = new InputStreamReader(new FileInputStream(file), StandardCharsets.UTF_8)) {
             Type typeList = new TypeToken<Map<String, List<BoundContainer>>>(){}.getType();
             Map<String, List<BoundContainer>> rawList = gson.fromJson(reader, typeList);
             if (rawList != null) {
@@ -70,7 +73,7 @@ public class BindingStore {
         } catch (Exception ignored) {}
         
         // Fallback: try legacy load (raw map of single objects)
-        try (FileReader reader = new FileReader(file)) {
+        try (InputStreamReader reader = new InputStreamReader(new FileInputStream(file), StandardCharsets.UTF_8)) {
             Type typeSingle = new TypeToken<Map<String, BoundContainer>>(){}.getType();
             Map<String, BoundContainer> rawSingle = gson.fromJson(reader, typeSingle);
             byPlayer.clear();
@@ -132,7 +135,7 @@ public class BindingStore {
     }
 
     public void save() {
-        try (FileWriter writer = new FileWriter(file)) {
+        try (OutputStreamWriter writer = new OutputStreamWriter(new FileOutputStream(file), StandardCharsets.UTF_8)) {
             Map<String, Object> root = new HashMap<>();
             root.put("paused", globalPaused);
             
@@ -246,6 +249,37 @@ public class BindingStore {
             byPlayer.remove(player);
         }
         return removed;
+    }
+
+    public boolean setPaused(UUID player, String name, boolean paused) {
+        List<BoundContainer> list = byPlayer.get(player);
+        if (list == null) return false;
+        for (BoundContainer bc : list) {
+            if (bc.name != null && bc.name.equals(name)) {
+                bc.paused = paused;
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean setAllPaused(UUID player, boolean paused) {
+        List<BoundContainer> list = byPlayer.get(player);
+        if (list == null || list.isEmpty()) return false;
+        for (BoundContainer bc : list) {
+            bc.paused = paused;
+        }
+        return true;
+    }
+
+    public boolean setAllPaused(boolean paused) {
+        if (byPlayer.isEmpty()) return false;
+        for (List<BoundContainer> list : byPlayer.values()) {
+            for (BoundContainer bc : list) {
+                bc.paused = paused;
+            }
+        }
+        return true;
     }
 
     public UUID ownerOf(Location loc) {
