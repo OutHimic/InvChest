@@ -22,3 +22,25 @@
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 replay_pid*
+
+# Maven build output
+target/
+
+# Maven shade plugin
+dependency-reduced-pom.xml
+
+# IntelliJ IDEA
+*.iml
+.idea/
+
+# Eclipse
+.classpath
+.project
+.settings/
+
+# VS Code
+.vscode/
+
+# OS files
+.DS_Store
+Thumbs.db
